@@ -1,0 +1,45 @@
+{% extends "template.html" %}
+
+{% block customstyle %}
+{{ super() }}
+<script>
+    window.onload(focus())
+</script>
+
+
+{% endblock %}
+
+<body>{% block header %}
+    {{ super() }}
+    <div style="background:red;color: white;">
+        Currently Building<br />TODO : Get interactive session running
+    </div>
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <form action="/local" method="POST">
+                    <input id="command" name="command">
+                    <input type="Submit" value="Run">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3 style="color: white;">Output</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea readonly style="border-color: black ;width: 90%; height: 50vh;background-color: black;color: rgb(4, 206, 4);">
+                {{ displayOut }}
+            </textarea>
+            </td>
+        </tr>
+    </table>
+    {% endblock %}
+    <script type="text/Javascript">
+        function focus() {
+            document.getElementById("command")[0].focus()
+        }
+    </script>
+</body>

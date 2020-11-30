@@ -1,0 +1,57 @@
+{% extends "template.html" %}
+
+{% block customstyle %}
+{{ super() }}
+{% endblock %}
+
+<body>{% block header %}
+    {{ super() }}
+    <div style="background:red;color: white;">
+        Currently Building<br />TODO : enable server tear down, set working directory to a clean directory
+    </div>
+    <div style="color: green;">
+        <h2>Stand Up Server</h2><br />
+        <form method="POST">
+            <select name="interface" id="addr">
+                {% for address in addresses %}
+                <option value="{{ address }}">{{ address }}</option>
+                {% endfor %}
+            </select>
+            <input type="number" name="port" placeholder="1-65535">
+            <select name="server_type" id="srv">
+                <option value="HTTP">HTTP</option>
+                <option value="HTTPS">HTTPS</option>
+                <option value="SMB">SMB</option>
+                <option value="tcp_shell">TCP Shell</option>
+                <option value="FTP">FTP</option>
+            </select>
+            <input type="submit" value="Spin-up">
+        </form>
+    </div>
+    <div style="color: green;">
+        Table of servers
+        <table style=" opacity: .8; width: 100%;text-align: center;">
+            <th>Server ID</th>
+            <th>Server Address</th>
+            <th>Server Port</th>
+            <th>Server Type</th>
+            {% for microserver in microservers%}
+            <tr>
+                <td>
+                    {{ microserver['server_id'] }}
+                </td>
+                <td>
+                    {{ microserver['server_address'] }}
+                </td>
+                <td>
+                    {{ microserver['server_port'] }}
+                </td>
+                <td>
+                    {{ microserver['server_type'] }}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endblock %}
+</body>

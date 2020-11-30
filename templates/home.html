@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/home.css') }}" />
+    <title>Command & Control</title>
+</head>
+
+<body class="body">
+    <h1 class="header">{{Name}}'s C&C Server</h1>
+    <br />
+    <br />
+    <table class="form">
+        <tr>
+            <td>
+                <form action="authenticate" method="post">
+                    <label for="username">Login</label>
+                    <br/>
+                    <br>
+                    <label style="color:black;font-size: 16px;">Username</label>
+                    <input type="text" name="username" placeholder="Username" required>
+                    <br/>
+                    <br/>
+                    <label style="color:black;font-size: 16px;">Password</label>
+                    <input type="password" name="password" value='' required>
+                    <br/>
+                    <br/>
+                    <input type="submit" value="Login">
+                </form>            
+            </td>
+        </tr>
+
+    </table>
+</body>
+
+</html>

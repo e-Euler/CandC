@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% block customstyle %}
+<head>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/dashboard.css') }}" />
+<title>Dashboard</title>
+</head>
+{% endblock %}
+
+<body class="page">
+
+{% block header %}
+<div>
+    <table class="heading">
+        <tr>
+            <td>
+                {% if user.role == "admin"%}
+                <h1>Welcome Master!</h1>
+                {%else%}
+                <h1>Welcome {{user.username}}</h1>
+                {%endif%}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul class="navigation">
+                    <li><a href="{{url_for('dashboard')}}">Dashboard</a></li>
+                    <li><a href="{{url_for('local')}}">Local</a></li>
+                    <li><a href="{{url_for('servers')}}">Servers</a></li>
+                    <li><a href="{{url_for('bots')}}">Bots</a></li>
+                    {%if user.role == "admin"%}
+                    <li><a href="{{url_for('administration')}}">Administration</a></li>
+                    {%endif%}
+                    <li><a href="{{url_for('logout')}}">Logout</li>
+                  </ul> 
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock %}
+
+
+
+</body>
